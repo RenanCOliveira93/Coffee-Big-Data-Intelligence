@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "coffeebdi"
+version = "0.1.0"
+description = "Coffee Big Data Intelligence: bronze/silver/gold pipeline, analytics and engine benchmark for Brazilian coffee"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy", "pandas", "polars", "duckdb", "pyarrow", "pyspark", "scikit-learn", "xgboost",
+  "statsmodels", "matplotlib", "plotly", "scipy", "requests", "openpyxl", "xlrd", "shapely",
+  "python-dotenv", "psutil",
+]
+
+[project.optional-dependencies]
+mlflow = ["mlflow"]
+dev = ["pytest", "nbformat", "nbclient", "ipykernel", "install-jdk"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["spark: requires Java + PySpark", "network: hits external APIs"]

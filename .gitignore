@@ -1,0 +1,15 @@
+.venv/
+.tools/
+.env
+__pycache__/
+.ipynb_checkpoints/
+*.egg-info/
+.pytest_cache/
+data/lake/
+data/bench/
+data/external/
+mlruns/
+logs/
+spark-warehouse/
+metastore_db/
+mlflow.db
