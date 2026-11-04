@@ -1,7 +1,15 @@
 """Helpers para construir notebooks com nbformat."""
 import nbformat as nbf
 
-SETUP = '''import warnings
+SETUP = '''import sys
+from pathlib import Path
+try:
+    import coffeebdi  # noqa: F401  (pacote instalado com `pip install -e .`)
+except ModuleNotFoundError:  # kernel sem o pacote: usa o código-fonte do repositório
+    _src = next(p / "src" for p in [Path.cwd(), *Path.cwd().parents] if (p / "src" / "coffeebdi").is_dir())
+    sys.path.insert(0, str(_src))
+
+import warnings
 warnings.filterwarnings("ignore")
 
 import numpy as np
